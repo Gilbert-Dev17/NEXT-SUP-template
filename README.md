@@ -13,6 +13,9 @@ A personal full-stack starter template built with Next.js, Supabase, Tailwind CS
 | [Tailwind CSS v4](https://tailwindcss.com/) | Utility-first styling |
 | [shadcn/ui](https://ui.shadcn.com/) | Component library (Nova preset, Radix UI) |
 | [Supabase](https://supabase.com/) | Backend-as-a-Service (Auth, Database, Storage) |
+| [GraphQL](https://graphql.org/) + [graphql-request](https://github.com/graphql-request/graphql-request) | Lightweight GraphQL fetching client |
+| [TanStack Query](https://tanstack.com/query/latest) | Client-side data fetching and caching |
+| [motion](https://motion.dev/) | Animation library for React |
 | [pnpm](https://pnpm.io/) | Fast, disk-efficient package manager |
 
 ---
@@ -44,6 +47,17 @@ pnpm dev
 
 ---
 
+## New Features Included
+
+This template now includes example setup for:
+
+- `graphql-request` with `src/lib/graphqlClient.ts`
+- `@tanstack/react-query` with `src/lib/queryClient.ts` and `src/components/Providers.tsx`
+- `framer-motion` style animation via `motion` in `src/components/ui/MotionExample.tsx`
+- A demo route at `/demo` that shows the GraphQL query and animated UI together
+
+---
+
 ## Getting Started
 
 ### Prerequisites
@@ -62,7 +76,7 @@ pnpm install
 cp .env.example .env.local
 ```
 
-Fill in your Supabase credentials in `.env.local` (see [Environment Variables](#environment-variables)), then run the development server:
+Fill in your Supabase credentials and GraphQL endpoint in `.env.local` (see [Environment Variables](#environment-variables)), then run the development server:
 
 ```bash
 pnpm dev
@@ -131,6 +145,7 @@ cp .env.example .env.local
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Supabase Dashboard → Project Settings → API |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anonymous public key | Supabase Dashboard → Project Settings → API |
+| `NEXT_PUBLIC_GRAPHQL_ENDPOINT` | GraphQL API URL for `graphql-request` | Your GraphQL server or proxy endpoint |
 
 > **Note:** Never commit `.env.local` to version control. It is already included in `.gitignore`.
 
