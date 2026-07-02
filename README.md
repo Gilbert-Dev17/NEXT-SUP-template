@@ -8,13 +8,15 @@ A personal full-stack starter template built with Next.js, Supabase, Tailwind CS
 
 | Technology | Purpose |
 |---|---|
-| [Next.js 15](https://nextjs.org/) | React framework with App Router |
+| [Next.js 16](https://nextjs.org/) | React framework with App Router |
 | [TypeScript](https://www.typescriptlang.org/) | Type safety |
 | [Tailwind CSS v4](https://tailwindcss.com/) | Utility-first styling |
 | [shadcn/ui](https://ui.shadcn.com/) | Component library (Nova preset, Radix UI) |
 | [Supabase](https://supabase.com/) | Backend-as-a-Service (Auth, Database, Storage) |
 | [GraphQL](https://graphql.org/) + [graphql-request](https://github.com/graphql-request/graphql-request) | Lightweight GraphQL fetching client |
 | [TanStack Query](https://tanstack.com/query/latest) | Client-side data fetching and caching |
+| [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) | Form handling and schema validation |
+| [next-themes](https://github.com/pacocoursey/next-themes) | Dark/light mode theming |
 | [motion](https://motion.dev/) | Animation library for React |
 | [pnpm](https://pnpm.io/) | Fast, disk-efficient package manager |
 
@@ -47,14 +49,17 @@ pnpm dev
 
 ---
 
-## New Features Included
+## Features Included
 
-This template now includes example setup for:
+This template includes pre-configured setup for:
 
-- `graphql-request` with `src/lib/graphqlClient.ts`
-- `@tanstack/react-query` with `src/lib/queryClient.ts` and `src/components/Providers.tsx`
-- `framer-motion` style animation via `motion` in `src/components/ui/MotionExample.tsx`
-- A demo route at `/demo` that shows the GraphQL query and animated UI together
+- **GraphQL client** — `graphql-request` with `src/lib/graphqlClient.ts`
+- **Data fetching** — `@tanstack/react-query` with `src/lib/queryClient.ts` and `src/components/Providers.tsx`
+- **Animations** — `motion` (Framer Motion) with example in `src/components/ui/MotionExample.tsx`
+- **Form handling** — `react-hook-form` + `zod` + `@hookform/resolvers` for type-safe form validation
+- **Dark mode** — `next-themes` with system preference detection and a ready-to-use `ThemeToggle` component at `src/components/shared/ThemeToggle.tsx`
+- **shadcn/ui components** — `button`, `input`, `label`, `card`, `sonner` (toast notifications)
+- **Demo route** — `/demo` showcasing the GraphQL query and animated UI together
 
 ---
 
@@ -102,9 +107,16 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 │   │   ├── layout.tsx          # Root layout
 │   │   └── page.tsx            # Home page
 │   ├── components/
+│   │   ├── Providers.tsx       # App providers (ThemeProvider, QueryClientProvider)
 │   │   ├── ui/                 # shadcn/ui components (auto-generated)
-│   │   │   └── button.tsx      # Example UI component
+│   │   │   ├── button.tsx      # Button component
+│   │   │   ├── card.tsx        # Card component
+│   │   │   ├── input.tsx       # Input component
+│   │   │   ├── label.tsx       # Label component
+│   │   │   ├── sonner.tsx      # Toast notifications (Sonner)
+│   │   │   └── MotionExample.tsx # Motion animation example
 │   │   └── shared/             # Reusable custom components
+│   │       └── ThemeToggle.tsx  # Dark/light mode toggle
 │   ├── config/
 │   │   └── constants/          # App-wide constants (routes, endpoints, etc.)
 │   ├── hooks/                  # Custom React hooks
@@ -116,6 +128,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 │   │   │   ├── server.ts       # Server-side Supabase client
 │   │   │   ├── queries.ts      # Database query functions
 │   │   │   └── proxy.ts        # Middleware/proxy Supabase client
+│   │   ├── graphqlClient.ts    # GraphQL request client
+│   │   ├── queryClient.ts     # TanStack Query client
 │   │   └── utils.ts            # Utility functions (cn function, etc.)
 │   ├── types/                  # Global TypeScript types and interfaces
 │   └── utils/                  # Custom helper functions
